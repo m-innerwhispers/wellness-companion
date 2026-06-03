@@ -15,9 +15,9 @@
   <link rel="stylesheet" href="css/dashboard.css"/>
 </head>
 <body class="text-white min-h-screen flex flex-col font-sans">
-<!-- ============================================================
+<!--
      HEADER
-============================================================ -->
+-->
 <header class="sticky top-0 z-50 bg-card border-b border-white/10
                flex items-center justify-between px-6 py-3">
   <!-- LEFT -->
@@ -69,13 +69,13 @@
     </div>
   </div>
 </header>
-<!-- ============================================================
+<!--
      BODY
-============================================================ -->
+-->
 <div class="flex flex-1 overflow-hidden">
-<!-- ============================================================
+<!--
      SIDEBAR
-============================================================ -->
+-->
 <aside id="sidebar"
        class="w-64 bg-card border-r border-white/10
               hidden md:flex flex-col">
@@ -136,13 +136,13 @@
     </button>
   </div>
 </aside>
-<!-- ============================================================
+<!--
      MAIN CONTENT
-============================================================ -->
+-->
 <main class="flex-1 overflow-y-auto p-6 space-y-8">
-<!-- ============================================================
+<!-- 
      WELCOME BANNER
-============================================================ -->
+-->
 <section class="welcome-banner">
   <!-- LEFT -->
   <div>
@@ -166,9 +166,9 @@
   <img src="assets/banner-wellness.png"
        class="hidden md:block w-72 object-contain"/>
 </section>
-<!-- ============================================================
+<!--
      STATS
-============================================================ -->
+-->
 <section>
   <div class="flex items-center justify-between mb-5">
     <h2 class="text-xl font-semibold">
@@ -183,9 +183,9 @@
        class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-6 gap-4">
   </div>
 </section>
-<!-- ============================================================
+<!--
      CHART
-============================================================ -->
+-->
 <section class="chart-section">
   <div class="flex items-center justify-between mb-6">
     <div>
@@ -215,9 +215,9 @@
   <!-- CHART -->
   <canvas id="moodChart" height="100"></canvas>
 </section>
-<!-- ============================================================
+<!--
      RECENT MOOD TABLE
-============================================================ -->
+-->
 <section class="table-section">
   <div class="flex items-center justify-between mb-6">
     <h2 class="font-semibold text-lg">
@@ -245,9 +245,7 @@
 </section>
 </main>
 </div>
-<!-- ============================================================
-     EXTERNAL JS
-============================================================ -->
+
 <script src="js/dashboard.js"></script>
 </body>
 </html>
