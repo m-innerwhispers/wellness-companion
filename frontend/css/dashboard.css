@@ -1,0 +1,140 @@
+/* 
+   INNERWHISPERS DASHBOARD CSS
+*/
+body {
+  background: #111827;
+}
+/* 
+   SIDEBAR
+*/
+#sidebar {
+  transition: all 0.3s ease;
+}
+/*
+   NAVIGATION
+*/
+.nav-link {
+  color: rgba(255,255,255,0.6);
+  transition: 0.3s ease;
+}
+.nav-link:hover {
+  background: rgba(255,255,255,0.05);
+  color: white;
+}
+.nav-link.active {
+  background: rgba(139,92,246,0.2);
+  color: #8B5CF6;
+  font-weight: 600;
+}
+/*
+   WELCOME BANNER
+*/
+.welcome-banner {
+  background: linear-gradient(
+    to right,
+    rgba(139,92,246,0.2),
+    #1F2937
+  );
+  border: 1px solid rgba(139,92,246,0.2);
+  border-radius: 24px;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.banner-btn {
+  margin-top: 24px;
+  padding: 12px 24px;
+  background: #8B5CF6;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+.banner-btn:hover {
+  opacity: 0.8;
+}
+/*
+   STAT CARDS
+*/
+.stat-card {
+  background: #1F2937;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 20px;
+  transition: 0.3s ease;
+}
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(139,92,246,0.2);
+}
+.card-title {
+  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+}
+.card-value {
+  font-size: 32px;
+  font-weight: bold;
+  margin-top: 6px;
+}
+.card-growth {
+  margin-top: 8px;
+  font-size: 14px;
+}
+/*
+   CHART SECTION
+*/
+.chart-section {
+  background: #1F2937;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  padding: 24px;
+}
+/*
+   FILTER BUTTONS
+*/
+.filter-btn {
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: #374151;
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+.filter-btn:hover {
+  background: rgba(139,92,246,0.2);
+}
+.active-filter {
+  background: #8B5CF6;
+  color: white;
+}
+/*
+   TABLE SECTION
+*/
+.table-section {
+  background: #1F2937;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  padding: 24px;
+}
+table {
+  width: 100%;
+}
+th {
+  text-align: left;
+  padding-bottom: 12px;
+  color: rgba(255,255,255,0.5);
+  font-size: 13px;
+}
+td {
+  padding: 16px 0;
+}
+/*
+   SCROLLBAR
+*/
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #8B5CF6;
+  border-radius: 10px;
+}
