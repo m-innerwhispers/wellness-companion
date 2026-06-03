@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>InnerWhispers Dashboard</title>
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/dashboard.css"/>
+</head>
+<body class="text-white min-h-screen flex flex-col font-sans">
+<!-- ============================================================
+     HEADER
+============================================================ -->
+<header class="sticky top-0 z-50 bg-card border-b border-white/10
+               flex items-center justify-between px-6 py-3">
+  <!-- LEFT -->
+  <div class="flex items-center gap-4">
+    <!-- MOBILE MENU -->
+    <button class="md:hidden"
+            onclick="toggleSidebar()">
+      <i class="fa-solid fa-bars text-xl"></i>
+    </button>
+    <!-- LOGO -->
+    <div class="flex items-center gap-3">
+      <img src="assets/logo-innerwhispers.png"
+           alt="InnerWhispers Logo"
+           class="w-10 h-10 rounded-xl object-cover"/>
+      <div>
+        <h1 class="font-bold text-lg tracking-wide">
+          InnerWhispers
+        </h1>
+        <p class="text-xs text-white/40">
+          AI Wellness Companion
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- RIGHT -->
+  <div class="flex items-center gap-5">
+    <!-- NOTIFICATION -->
+    <button class="relative">
+      <i class="fa-regular fa-bell text-xl text-white/70"></i>
+      <span class="absolute -top-1 -right-1
+                   bg-pink-400 text-xs w-4 h-4
+                   rounded-full flex items-center
+                   justify-center">
+        3
+      </span>
+    </button>
+    <!-- PROFILE -->
+    <div class="flex items-center gap-3">
+      <img src="assets/avatar-mrudu.jpg"
+           class="w-10 h-10 rounded-full object-cover border-2 border-purple-500"/>
+      <div class="hidden md:block">
+        <p class="text-sm font-semibold">
+          Mrudu
+        </p>
+        <p class="text-xs text-white/40">
+          Full Stack Development
+        </p>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- ============================================================
+     BODY
+============================================================ -->
+<div class="flex flex-1 overflow-hidden">
+<!-- ============================================================
+     SIDEBAR
+============================================================ -->
+<aside id="sidebar"
+       class="w-64 bg-card border-r border-white/10
+              hidden md:flex flex-col">
+  <!-- USER -->
+  <div class="p-5 border-b border-white/10">
+    <p class="text-xs text-white/40 uppercase tracking-widest">
+      Logged In
+    </p>
+    <h2 class="font-semibold mt-2">
+      Mrudu Nayana Gali
+    </h2>
+    <span class="inline-block mt-2
+                 px-3 py-1 rounded-full
+                 bg-purple-500/20 text-purple-400 text-xs">
+      Full Stack Development
+    </span>
+  </div>
+  <!-- NAVIGATION -->
+  <nav class="flex-1 p-4 space-y-2">
+    <a href="#"
+       class="nav-link active flex items-center gap-3 px-4 py-3 rounded-xl">
+      <i class="fa-solid fa-chart-line"></i>
+      Dashboard
+    </a>
+    <a href="#"
+       class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl">
+      <i class="fa-solid fa-face-smile"></i>
+      Mood Tracker
+    </a>
+    <a href="#"
+       class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl">
+      <i class="fa-solid fa-book"></i>
+      Journal
+    </a>
+    <a href="#"
+       class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl">
+      <i class="fa-solid fa-robot"></i>
+      AI Companion
+    </a>
+    <a href="#"
+       class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl">
+      <i class="fa-solid fa-clipboard-check"></i>
+      Assessments
+    </a>
+    <a href="#"
+       class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl">
+      <i class="fa-solid fa-headset"></i>
+      Support
+    </a>
+  </nav>
+  <!-- EMERGENCY -->
+  <div class="p-4">
+    <button class="w-full bg-pink-500/20
+                   border border-pink-500/40
+                   text-pink-400 rounded-xl
+                   py-3 font-semibold">
+      🚨 Emergency Help
+    </button>
+  </div>
+</aside>
+<!-- ============================================================
+     MAIN CONTENT
+============================================================ -->
+<main class="flex-1 overflow-y-auto p-6 space-y-8">
+<!-- ============================================================
+     WELCOME BANNER
+============================================================ -->
+<section class="welcome-banner">
+  <!-- LEFT -->
+  <div>
+    <h1 id="greeting"
+        class="text-3xl font-bold">
+      Good Evening, Mrudu 👋
+    </h1>
+    <p class="text-white/50 mt-2">
+      Welcome back to InnerWhispers
+    </p>
+    <p class="text-white/60 mt-4 max-w-lg">
+      Track your emotional wellness,
+      journal your thoughts,
+      and receive safe AI-powered support.
+    </p>
+    <button class="banner-btn">
+      Log Today's Mood
+    </button>
+  </div>
+  <!-- RIGHT -->
+  <img src="assets/banner-wellness.png"
+       class="hidden md:block w-72 object-contain"/>
+</section>
+<!-- ============================================================
+     STATS
+============================================================ -->
+<section>
+  <div class="flex items-center justify-between mb-5">
+    <h2 class="text-xl font-semibold">
+      Wellness Overview
+    </h2>
+    <span class="text-white/40 text-sm">
+      Updated just now
+    </span>
+  </div>
+  <!-- DYNAMIC STATS -->
+  <div id="statsGrid"
+       class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-6 gap-4">
+  </div>
+</section>
+<!-- ============================================================
+     CHART
+============================================================ -->
+<section class="chart-section">
+  <div class="flex items-center justify-between mb-6">
+    <div>
+      <h2 class="font-semibold text-lg">
+        Mood Trends
+      </h2>
+      <p class="text-white/40 text-sm">
+        Last 7 days analytics
+      </p>
+    </div>
+  </div>
+  <!-- FILTER BUTTONS -->
+  <div class="flex gap-2 mb-4">
+    <button onclick="updateChart('7d')"
+            class="filter-btn active-filter">
+      7D
+    </button>
+    <button onclick="updateChart('14d')"
+            class="filter-btn">
+      14D
+    </button>
+    <button onclick="updateChart('30d')"
+            class="filter-btn">
+      30D
+    </button>
+  </div>
+  <!-- CHART -->
+  <canvas id="moodChart" height="100"></canvas>
+</section>
+<!-- ============================================================
+     RECENT MOOD TABLE
+============================================================ -->
+<section class="table-section">
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="font-semibold text-lg">
+      Recent Mood Entries
+    </h2>
+    <button class="text-purple-400 text-sm">
+      View All →
+    </button>
+  </div>
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Mood</th>
+          <th>Stress</th>
+          <th>Sleep</th>
+          <th>Energy</th>
+        </tr>
+      </thead>
+      <tbody id="moodTableBody">
+      </tbody>
+    </table>
+  </div>
+</section>
+</main>
+</div>
+<!-- ============================================================
+     EXTERNAL JS
+============================================================ -->
+<script src="js/dashboard.js"></script>
+</body>
+</html>
