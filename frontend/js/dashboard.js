@@ -189,6 +189,30 @@ function renderTable() {
 }
 renderTable();
 /*
+   HANDLE MOOD SUBMISSION
+*/
+function handleMoodSubmit() {
+  const mood =
+  document.getElementById('mood').value;
+  const stress =
+  document.getElementById('stress').value;
+  const sleep =
+  document.getElementById('sleep').value;
+  const energy =
+  document.getElementById('energy').value;
+  const newEntry = {
+    date: new Date().toLocaleDateString(),
+    mood,
+    stress: `${stress}/10`,
+    sleep: `${sleep}/10`,
+    energy: `${energy}/10`
+  };
+  saveMoodEntry(newEntry);
+  moodEntries.unshift(newEntry);
+  renderTable();
+  alert("Mood saved successfully!");
+}
+/*
    DYNAMIC GREETING
 */
 const greeting =
