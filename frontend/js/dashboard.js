@@ -1,3 +1,10 @@
+/*
+   CHECK USER AUTH
+*/
+checkAuth();
+/*
+   SIDEBAR TOGGLE
+*/
 const sidebar = document.getElementById('sidebar');
 function toggleSidebar() {
   sidebar.classList.toggle('hidden');
