@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0"/>
+  <title>InnerWhispers Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet"
+  href="css/dashboard.css"/>
+</head>
+<body class="bg-[#111827]
+             min-h-screen
+             flex items-center
+             justify-center
+             text-white">
+<div class="w-full max-w-md bg-[#1F2937]
+            rounded-3xl p-8">
+  <!-- IMAGE -->
+  <img src="assets/login-illustration.png"
+       class="w-48 mx-auto mb-6"/>
+  <h1 class="text-3xl font-bold text-center mb-8">
+    Welcome Back
+  </h1>
+  <!-- EMAIL -->
+  <div class="mb-4">
+    <label class="form-label">
+      Email
+    </label>
+    <input type="email"
+           id="email"
+           class="form-input"/>
+  </div>
+  <!-- PASSWORD -->
+  <div class="mb-6">
+    <label class="form-label">
+      Password
+    </label>
+    <input type="password"
+           id="password"
+           class="form-input"/>
+  </div>
+  <!-- BUTTON -->
+  <button onclick="handleLogin()"
+          class="save-btn w-full">
+    Login
+  </button>
+</div>
+<script src="js/auth.js"></script>
+<script>
+function handleLogin() {
+  const email =
+  document.getElementById('email').value;
+  const password =
+  document.getElementById('password').value;
+  const success =
+  loginUser(email, password);
+  if(success) {
+    window.location.href =
+    'dashboard.html';
+  }
+  else {
+    alert('Invalid credentials');
+  }
+}
+</script>
+</body>
+</html>
