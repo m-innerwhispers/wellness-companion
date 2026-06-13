@@ -13,57 +13,85 @@ function toggleSidebar() {
    FETCH DASHBOARD STATS
 */
 async function fetchStats() {
-  const response =
-  await fetch(
-    'http://localhost:5000/api/users/me/stats'
-  );
-  const data =
-  await response.json();
-  const stats = [
-    {
-      title: "Mood Average",
-      value: data.moodAverage,
-      growth: "+12% this week",
-      color: "text-green-400",
-      icon: "assets/icons/mood.png"
-    },
-    {
-      title: "Wellness Streak",
-      value: data.streak,
-      growth: "days active",
-      color: "text-orange-400",
-      icon: "assets/icons/streak.png"
-    },
-    {
-      title: "Journal Entries",
-      value: data.journalEntries,
-      growth: "reflections written",
-      color: "text-pink-400",
-      icon: "assets/icons/journal.png"
-    },
-    {
-      title: "AI Sessions",
-      value: data.aiSessions,
-      growth: "supportive chats",
-      color: "text-cyan-400",
-      icon: "assets/icons/chat.png"
-    },
-    {
-      title: "Assessments",
-      value: data.assessments,
-      growth: "completed",
-      color: "text-purple-400",
-      icon: "assets/icons/assessment.png"
-    },
-    {
-      title: "Mood Check-ins",
-      value: data.checkins,
-      growth: "entries logged",
-      color: "text-green-400",
-      icon: "assets/icons/checkin.png"
+  try {
+    const response =
+    await fetch(
+      'http://localhost:5000/api/users/me/stats'
+    );
+    if(!response.ok) {
+      throw new Error(
+        'Failed to fetch stats'
+      );
     }
-  ];
-  renderStats(stats);
+    const data =
+    await response.json();
+    const stats = [
+      {
+        title: "Mood Average",
+        value: data.moodAverage,
+        growth: "+12% this week",
+        color: "text-green-400",
+        icon: "assets/icons/mood.png"
+      },
+      {
+        title: "Wellness Streak",
+        value: data.streak,
+        growth: "days active",
+        color: "text-orange-400",
+        icon: "assets/icons/streak.png"
+      },
+      {
+        title: "Journal Entries",
+        value: data.journalEntries,
+        growth: "reflections written",
+        color: "text-pink-400",
+        icon: "assets/icons/journal.png"
+      },
+      {
+        title: "AI Sessions",
+        value: data.aiSessions,
+        growth: "supportive chats",
+        color: "text-cyan-400",
+        icon: "assets/icons/chat.png"
+      },
+      {
+        title: "Assessments",
+        value: data.assessments,
+        growth: "completed",
+        color: "text-purple-400",
+        icon: "assets/icons/assessment.png"
+      },
+      {
+        title: "Mood Check-ins",
+        value: data.checkins,
+        growth: "entries logged",
+        color: "text-green-400",
+        icon: "assets/icons/checkin.png"
+      }
+    ];
+    renderStats(stats);
+  }
+  catch(error) {
+    statsGrid.innerHTML = `
+      <div class="col-span-6
+                  bg-red-500/10
+                  border border-red-500/20
+                  rounded-2xl
+                  p-8
+                  text-center">
+        <img src="assets/error.png"
+             class="w-24 mx-auto mb-4"/>
+        <h2 class="text-red-400
+                   text-xl font-semibold">
+          Unable to load dashboard stats
+        </h2>
+        <p class="text-white/50 mt-2">
+          Please try again later.
+        </p>
+      </div>
+    `;
+    console.error(error);
+  }
 }
 /*
    RENDER STAT CARDS
