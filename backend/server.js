@@ -31,6 +31,31 @@ app.get('/api/users/me/stats', (req, res) => {
   });
 });
 /*
+   MOOD TREND API
+*/
+app.get('/api/moods/trend', (req, res) => {
+  res.json({
+    labels: [
+      'Mon',
+      'Tue',
+      'Wed',
+      'Thu',
+      'Fri',
+      'Sat',
+      'Sun'
+    ],
+    values: [
+      6,
+      7,
+      5,
+      8,
+      9,
+      7,
+      8
+    ]
+  });
+});
+/*
    SERVER
 */
 app.listen(5000, () => {
