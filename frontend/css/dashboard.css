@@ -198,3 +198,11 @@ td {
     background-position: -200% 0;
   }
 }
+/*
+   CHART CONTAINER
+*/
+.chart-container {
+  position: relative;
+  height: 400px;
+  width: 100%;
+}
