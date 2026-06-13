@@ -6,9 +6,21 @@ checkAuth();
    SIDEBAR TOGGLE
 */
 const sidebar = document.getElementById('sidebar');
-function toggleSidebar() {
-  sidebar.classList.toggle('hidden');
-}
+/*
+   MOBILE SIDEBAR
+*/
+const hamburger =
+document.getElementById(
+  'hamburger'
+);
+hamburger.addEventListener(
+  'click',
+  () => {
+    sidebar.classList.toggle(
+      'active'
+    );
+  }
+);
 /*
    FETCH DASHBOARD STATS
 */
