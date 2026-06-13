@@ -203,7 +203,12 @@ td {
 */
 .chart-container {
   position: relative;
-  height: 400px;
+  height: 300px;
+  @media (min-width: 768px) {
+  .chart-container {
+    height: 400px;
+  }
+}
   width: 100%;
 }
 /* 
@@ -230,6 +235,17 @@ td {
 .heatmap-cell {
   aspect-ratio: 1/1;
   border-radius: 8px;
+}
+/* 
+   MOBILE HEATMAP RESPONSIVE FIX
+*/
+  @media (max-width: 640px) {
+  .heatmap-grid {
+    gap: 6px;
+  }
+  .heatmap-cell {
+    border-radius: 4px;
+  }
 }
 /*
    ACTIVITY LEVELS
