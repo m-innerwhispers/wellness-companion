@@ -10,57 +10,66 @@ function toggleSidebar() {
   sidebar.classList.toggle('hidden');
 }
 /*
-   DASHBOARD STATS DATA
+   FETCH DASHBOARD STATS
 */
-const stats = [
-  {
-    title: "Mood Average",
-    value: "8.4",
-    growth: "+12% this week",
-    color: "text-green-400",
-    icon: "assets/icons/mood.png"
-  },
-  {
-    title: "Wellness Streak",
-    value: "12",
-    growth: "days active",
-    color: "text-orange-400",
-    icon: "assets/icons/streak.png"
-  },
-  {
-    title: "Journal Entries",
-    value: "28",
-    growth: "reflections written",
-    color: "text-pink-400",
-    icon: "assets/icons/journal.png"
-  },
-  {
-    title: "AI Sessions",
-    value: "54",
-    growth: "supportive chats",
-    color: "text-cyan-400",
-    icon: "assets/icons/chat.png"
-  },
-  {
-    title: "Assessments",
-    value: "6",
-    growth: "completed",
-    color: "text-purple-400",
-    icon: "assets/icons/assessment.png"
-  },
-  {
-    title: "Mood Check-ins",
-    value: "44",
-    growth: "entries logged",
-    color: "text-green-400",
-    icon: "assets/icons/checkin.png"
-  }
-];
+async function fetchStats() {
+  const response =
+  await fetch(
+    'http://localhost:5000/api/users/me/stats'
+  );
+  const data =
+  await response.json();
+  const stats = [
+    {
+      title: "Mood Average",
+      value: data.moodAverage,
+      growth: "+12% this week",
+      color: "text-green-400",
+      icon: "assets/icons/mood.png"
+    },
+    {
+      title: "Wellness Streak",
+      value: data.streak,
+      growth: "days active",
+      color: "text-orange-400",
+      icon: "assets/icons/streak.png"
+    },
+    {
+      title: "Journal Entries",
+      value: data.journalEntries,
+      growth: "reflections written",
+      color: "text-pink-400",
+      icon: "assets/icons/journal.png"
+    },
+    {
+      title: "AI Sessions",
+      value: data.aiSessions,
+      growth: "supportive chats",
+      color: "text-cyan-400",
+      icon: "assets/icons/chat.png"
+    },
+    {
+      title: "Assessments",
+      value: data.assessments,
+      growth: "completed",
+      color: "text-purple-400",
+      icon: "assets/icons/assessment.png"
+    },
+    {
+      title: "Mood Check-ins",
+      value: data.checkins,
+      growth: "entries logged",
+      color: "text-green-400",
+      icon: "assets/icons/checkin.png"
+    }
+  ];
+  renderStats(stats);
+}
 /*
    RENDER STAT CARDS
 */
 const statsGrid = document.getElementById('statsGrid');
-function renderStats() {
+function renderStats(stats) {
   statsGrid.innerHTML = "";
   stats.forEach((card) => {
     statsGrid.innerHTML += `
@@ -80,7 +89,7 @@ function renderStats() {
     `;
   });
 }
-renderStats();
+fetchStats();
 /*
    CHART.JS
 */
