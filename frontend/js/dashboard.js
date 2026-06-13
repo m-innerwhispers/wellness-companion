@@ -119,47 +119,68 @@ function renderStats(stats) {
 }
 fetchStats();
 /*
-   CHART.JS
+   LIVE MOOD TREND CHART
 */
-const ctx = document.getElementById('moodChart');
-let moodChart = new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
-    datasets: [{
-      label: 'Mood Score',
-      data: [6,7,5,8,9,7,8],
-      borderColor: '#8B5CF6',
-      backgroundColor: 'rgba(139,92,246,0.2)',
-      fill: true,
-      tension: 0.4,
-      pointBackgroundColor: '#8B5CF6',
-      pointRadius: 5
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        labels: {
-          color: 'white'
-        }
-      }
-    },
-    scales: {
-      y: {
-        ticks: {
-          color: 'white'
-        }
+async function loadMoodChart() {
+  try {
+    const response =
+    await fetch(
+      'http://localhost:5000/api/moods/trend'
+    );
+    const data =
+    await response.json();
+    const ctx =
+    document.getElementById('moodChart');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: data.labels,
+        datasets: [{
+          label: 'Mood Trend',
+          data: data.values,
+          borderColor: '#8B5CF6',
+          backgroundColor:
+          'rgba(139,92,246,0.2)',
+          fill: true,
+          tension: 0.4,
+          pointBackgroundColor:
+          '#8B5CF6',
+          pointRadius: 5
+        }]
       },
-      x: {
-        ticks: {
-          color: 'white'
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            labels: {
+              color: 'white'
+            }
+          }
+        },
+        scales: {
+          y: {
+            ticks: {
+              color: 'white'
+            }
+          },
+          x: {
+            ticks: {
+              color: 'white'
+            }
+          }
         }
       }
-    }
+    });
   }
-});
+  catch(error) {
+    console.error(
+      'Chart loading failed',
+      error
+    );
+  }
+}
+loadMoodChart();
 /*
    UPDATE CHART
 */
