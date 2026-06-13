@@ -182,6 +182,38 @@ async function loadMoodChart() {
 }
 loadMoodChart();
 /*
+   LOAD ACTIVITY HEATMAP
+*/
+async function loadHeatmap() {
+  try {
+    const response =
+    await fetch(
+      'http://localhost:5000/api/activity/heatmap'
+    );
+    const data =
+    await response.json();
+    const heatmapGrid =
+    document.getElementById(
+      'heatmapGrid'
+    );
+    heatmapGrid.innerHTML = "";
+    data.forEach((level) => {
+      heatmapGrid.innerHTML += `
+        <div class="
+             heatmap-cell
+             level-${level}">
+        </div>
+      `;
+    });
+  }
+  catch(error) {
+    console.error(
+      'Heatmap loading failed',
+      error
+    );
+  }
+}
+/*
    UPDATE CHART
 */
 function updateChart(days) {
@@ -296,3 +328,8 @@ else {
   greeting.innerText =
   "Good Evening, Mrudu 👋";
 }
+
+/*
+   LOAD HEATMAP
+*/
+loadHeatmap();
