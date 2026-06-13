@@ -56,6 +56,18 @@ app.get('/api/moods/trend', (req, res) => {
   });
 });
 /*
+   ACTIVITY HEATMAP API
+*/
+app.get('/api/activity/heatmap', (req, res) => {
+  res.json([
+    1, 2, 0, 3, 4, 1, 2,
+    3, 2, 1, 0, 4, 3, 2,
+    1, 2, 4, 3, 0, 1, 2,
+    4, 3, 2, 1, 2, 3, 4,
+    1, 0, 2, 3, 4
+  ]);
+});
+/*
    SERVER
 */
 app.listen(5000, () => {
