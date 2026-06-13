@@ -206,3 +206,46 @@ td {
   height: 400px;
   width: 100%;
 }
+/* 
+   HEATMAP SECTION
+ */
+.heatmap-section {
+  background: #1F2937;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  padding: 24px;
+}
+/*
+   HEATMAP GRID
+*/
+.heatmap-grid {
+  display: grid;
+  grid-template-columns:
+  repeat(7, 1fr);
+  gap: 10px;
+}
+/*
+   HEATMAP CELLS
+*/
+.heatmap-cell {
+  aspect-ratio: 1/1;
+  border-radius: 8px;
+}
+/*
+   ACTIVITY LEVELS
+*/
+.level-0 {
+  background: #111827;
+}
+.level-1 {
+  background: #312E81;
+}
+.level-2 {
+  background: #6D28D9;
+}
+.level-3 {
+  background: #8B5CF6;
+}
+.level-4 {
+  background: #C4B5FD;
+}
