@@ -249,3 +249,21 @@ td {
 .level-4 {
   background: #C4B5FD;
 }
+
+/* 
+   RESPONSIVE SIDEBAR
+*/
+@media (max-width: 768px) {
+  #sidebar {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    width: 260px;
+    height: 100vh;
+    z-index: 1000;
+    transition: 0.3s ease;
+  }
+  #sidebar.active {
+    left: 0;
+  }
+}
